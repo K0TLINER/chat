@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-applcation-mysql.properties
+application-mysql.properties
 
 .idea
 *.iws
