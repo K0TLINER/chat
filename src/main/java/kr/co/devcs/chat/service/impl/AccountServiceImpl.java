@@ -5,6 +5,7 @@ import kr.co.devcs.chat.entity.Account;
 import kr.co.devcs.chat.repository.AccountRepository;
 import kr.co.devcs.chat.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired private AccountRepository accountRepository;
     @Override
-    public Account addAccount(AccountForm accountForm) {
-        return null;
-    }
+    public Account addAccount(AccountForm accountForm) {return null; }
 
     @Override
     public Optional<Account> getAccount(long accountNo) {
@@ -36,9 +35,11 @@ public class AccountServiceImpl implements AccountService {
         return null;
     }
 
+
     @Override
     public List<Account> getAccountList(Pageable pageable, String nickname) {
-        return null;
+        System.out.println("getAccountList");
+        return accountRepository.findAllByNicknameLike(pageable,nickname).getContent();
     }
 
     @Override

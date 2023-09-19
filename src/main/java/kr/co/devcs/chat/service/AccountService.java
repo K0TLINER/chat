@@ -2,6 +2,7 @@ package kr.co.devcs.chat.service;
 
 import kr.co.devcs.chat.dto.AccountForm;
 import kr.co.devcs.chat.entity.Account;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
