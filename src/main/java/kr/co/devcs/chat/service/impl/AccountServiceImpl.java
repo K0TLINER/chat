@@ -6,10 +6,13 @@ import kr.co.devcs.chat.repository.AccountRepository;
 import kr.co.devcs.chat.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired private AccountRepository accountRepository;
@@ -19,7 +22,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account getAccount(long accountNo) {
+    public Optional<Account> getAccount(long accountNo) {
         return null;
     }
 

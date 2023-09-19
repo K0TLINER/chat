@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
-@Service
+//@Service
 @Transactional
 public interface AccountService {
     Account addAccount(AccountForm accountForm);
-    Account getAccount(long accountNo);
+    Optional<Account> getAccount(long accountNo);
     Account updateAccount(AccountForm accountForm);
     Boolean deleteAccount(long accountNo);
     List<Account> getAccountList(Pageable pageable, String nickname);
