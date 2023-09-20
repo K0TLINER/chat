@@ -4,6 +4,7 @@ import kr.co.devcs.chat.account.AccountTestApp;
 import kr.co.devcs.chat.dto.AccountForm;
 import kr.co.devcs.chat.entity.Account;
 import kr.co.devcs.chat.service.AccountService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -60,6 +61,15 @@ public class AccountTestAppImpl implements AccountTestApp {
     @Override
     @Test
     public void findAccountIdsTest() {
+
+        List<Account> accounts = accountService.findAccountIds("김성윤", LocalDate.parse("2023-09-19"));
+
+        Assertions.assertEquals(3,accounts.size());
+
+        for (Account account : accounts){
+            System.out.println("account = " + account);
+        }
+
 
     }
 }

@@ -44,6 +44,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<Account> findAccountIds(String name, LocalDate birthDate) {
-        return null;
+        return accountRepository.findByNameAndBirthDate(name, birthDate);
     }
 }
