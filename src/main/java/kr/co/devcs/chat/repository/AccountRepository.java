@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,4 +17,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Override
     void delete(Account entity);
     Page<Account> findAllByNicknameLike(Pageable pageable, String nickname);
+
+    List<Account> findByNameAndBirthDate(String name, LocalDate birthDate);
 }
