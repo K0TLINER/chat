@@ -15,6 +15,9 @@ import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class AccountTestAppImpl implements AccountTestApp {
@@ -36,13 +39,34 @@ public class AccountTestAppImpl implements AccountTestApp {
     @Test
     public void updateAccountTest() {
 
+        Account existingAccount = Account.builder()
+                .phone("010-1111-2222")
+                .email("protein@protein.com")
+                .build();
+
+        Account savedAccount = accountService.updateAccount(AccountForm.builder().phone(toString()).email(toString()).build());
+
+        AccountForm accountForm = AccountForm.builder()
+                .phone("010-7777-8888")
+                .email("sexy@sexy.com")
+                .build();
+
+        Account updatedAccount = accountService.updateAccount(accountForm);
+
     }
 
     @Override
     @Test
     public void deleteAccountTest() {
+        Account account = Account.builder()
+                .accountNo(888888)
+                .build();
 
+        boolean isDeleted = accountService.deleteAccount(888888);
+
+        assertFalse(isDeleted);
     }
+
 
     @Override
     @Test
@@ -64,7 +88,7 @@ public class AccountTestAppImpl implements AccountTestApp {
 
         List<Account> accounts = accountService.findAccountIds("김성윤", LocalDate.parse("2023-09-19"));
 
-        Assertions.assertEquals(3,accounts.size());
+        assertEquals(3,accounts.size());
 
         for (Account account : accounts){
             System.out.println("account = " + account);
