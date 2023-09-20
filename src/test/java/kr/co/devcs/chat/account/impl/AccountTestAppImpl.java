@@ -12,9 +12,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 public class AccountTestAppImpl implements AccountTestApp {
@@ -23,13 +25,39 @@ public class AccountTestAppImpl implements AccountTestApp {
     @Override
     @Test
     public void addAccountTest() {
+        AccountForm accountForm = AccountForm.builder()
+                .password("tjddbs1111")
+                .phone("01089114554")
+                .birthDate(LocalDate.now().minusDays(5).minusYears(10))
+                .email("sungyuun@naver.com")
+                .name("김성윤")
+                .statusMessage("hi")
+                .nickname("김엉윤")
+                .build();
 
+        accountService.getAccount(1);
+
+        Account account = accountService.getAccount(1).orElseThrow();
+        System.out.println(account);
     }
 
     @Override
     @Test
     public void getAccountTest() {
+        AccountForm accountForm = AccountForm.builder()
+                .password("tjddbs1111")
+                .phone("01089114554")
+                .birthDate(LocalDate.now().minusDays(5).minusYears(10))
+                .email("sungyuun@naver.com")
+                .name("김성윤")
+                .statusMessage("hi")
+                .nickname("김엉윤")
+                .build();
 
+        accountService.addAccount(accountForm);
+
+        Account account = accountService.getAccount(1).orElseThrow();
+        System.out.println(account);
     }
 
     @Override

@@ -18,11 +18,23 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired private AccountRepository accountRepository;
     @Override
-    public Account addAccount(AccountForm accountForm) {return null; }
+    public Account addAccount(AccountForm accountForm) {
+
+        Account account = Account.builder()
+                .phone(accountForm.getPhone())
+                .email(accountForm.getEmail())
+                .password(accountForm.getPassword())
+                .nickname(accountForm.getNickname())
+                .name(accountForm.getName())
+                .birthDate(accountForm.getBirthDate())
+                .statusMessage(accountForm.getStatusMessage())
+                .build();
+        return accountRepository.save(account);
+    }
 
     @Override
     public Optional<Account> getAccount(long accountNo) {
-        return null;
+        return accountRepository.findById(accountNo);
     }
 
     @Override
