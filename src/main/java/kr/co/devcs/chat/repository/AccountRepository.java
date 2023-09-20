@@ -12,10 +12,15 @@ import java.util.Optional;
 public interface AccountRepository extends JpaRepository<Account, Long> {
     @Override
     Optional<Account> findById(Long accountNo);
+
+    Optional<Account> findByPassword(String accountForm);
+
     @Override
     Account save(Account account);
+
     @Override
     void delete(Account entity);
+
     Page<Account> findAllByNicknameLike(Pageable pageable, String nickname);
 
     List<Account> findByNameAndBirthDate(String name, LocalDate birthDate);
